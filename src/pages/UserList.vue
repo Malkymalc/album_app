@@ -15,9 +15,6 @@
             <router-link :to="`/users/${user.id}`" class="btn btn-primary">
               View User Profile
             </router-link>
-            <router-link :to="`/users/${user.id}/edit`" class="btn btn-primary">
-              Edit User Profile
-            </router-link>
           </div>
         </div>
       </li>

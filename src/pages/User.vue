@@ -55,13 +55,11 @@ export default {
     user() {
       const allUsers = this.$store.state.users.allUsers;
       const user = allUsers.filter(user => `${user.id}` === this.id)?.[0];
-      console.log('user', user);
       return user;
     },
     randomWord() {
       const randomWords = ['deploy', 'utilise', 'leverage', 'synergize with', 'exploit'];
       const randomIndex = Math.round(Math.random() * randomWords.length);
-      console.log('random index: ', randomIndex);
       return randomWords[randomIndex];
     }
   },

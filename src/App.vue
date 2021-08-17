@@ -1,13 +1,15 @@
 <template>
   <div class="container">
     <header>
-      <h1>Albums and Users</h1>
-      <nav>
-        <h2>Navigation goes here</h2>
+      <nav class="navbar navbar-dark bg-primary">
+        <div class="container-fluid">
+          <router-link class="navbar-brand" to="/">Album App</router-link>
+          <router-link class="text-light" to="/albums">Albums</router-link>
+          <router-link class="text-light" to="/users">Users</router-link>
+        </div>
       </nav>
-      <hr>
     </header>
-    <main>
+    <main class="pt-4">
       <router-view v-if="dataLoaded"></router-view>
       <div v-else class="d-flex justify-content-center align-items-center">
         <div class="spinner-grow" role="status">
