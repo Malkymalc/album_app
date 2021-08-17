@@ -1,28 +1,46 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="container">
+    <header>
+      <h1>Albums and Users</h1>
+      <nav>
+        <h2>Navigation goes here</h2>
+      </nav>
+      <hr>
+    </header>
+    <main>
+      <router-view v-if="dataLoaded"></router-view>
+      <div v-else class="d-flex justify-content-center align-items-center">
+        <div class="spinner-grow" role="status">
+          <span class="visually-hidden">Loading...</span>
+          <span class="visually-hidden">Loading...</span>
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+      <hr>
+    </main>
+    <footer>
+      <h2>This is the footer</h2>
+    </footer>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 
 export default {
   name: 'App',
-  components: {
-    HelloWorld
+  mounted() {
+    this.$store.dispatch('albums/loadData');
+    this.$store.dispatch('users/loadData');
+  },
+  computed: {
+    dataLoaded() {
+      const usersLoaded =  this.$store.state.users._loaded === true;
+      const albumsLoaded =  this.$store.state.albums._loaded === true;
+      return usersLoaded && albumsLoaded;
+    },
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 </style>
